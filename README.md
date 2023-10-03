@@ -1,54 +1,45 @@
 ## Degen-Token-ERC-20-Contract
 
-The "DegenGaming" smart contract represents a robust and versatile Ethereum-based solution designed for gaming purposes within the Avalanche Fuji Test Network. 
-This contract serves as a foundational building block for creating immersive gaming experiences, enabling game developers to manage in-game assets, tokens, and transactions seamlessly. 
-Made for Eth + Avax Intermediate Module 4 Project on the Metacrafters learning platform.
+The "DegenGaming" smart contract is a powerful and adaptable Ethereum-based solution tailored for gaming applications on the Avalanche Fuji Test Network. This contract serves as a fundamental framework for crafting engaging gaming experiences, empowering game developers to effortlessly handle in-game assets, tokens, and transactions. Specifically developed for the Eth + Avax Intermediate Module 4 Project on the Metacrafters learning platform.
 
 Let's delve into the salient features of this contract:
 
 **Key Features:**
 
-**Token Minting (Mint Function):**
+Token Information: The contract defines basic token information, including its name ("Degen Gaming Token"), symbol ("DGT"), and decimal precision (18).
 
-One of the central features of the contract is the ability to mint tokens, which can be achieved using the mint function.
-Minting tokens increases the overall token supply and allocates the newly minted tokens to a specific user's address.
-This functionality is instrumental for game developers as it allows them to generate in-game currency or rewards and distribute them to players as needed.
+Total Supply: It keeps track of the total token supply, which is set during contract deployment.
 
-**Token Burning (Burn Function):**
+Balance Tracking: The contract maintains a mapping of addresses to their token balances using the balanceOf mapping.
 
-Users are empowered to burn (permanently remove from circulation) their own tokens through the burn function.
-The process of token burning reduces the total token supply, providing flexibility for implementing various mechanisms within the game. For example, it can be used to simulate the removal of currency from circulation or introduce deflationary dynamics.
-**In-Game Item Store (GameStore Function):**
+Allowances: It stores allowances for token transfers, allowing one address to spend tokens on behalf of another. This is managed through the allowance mapping.
 
-The contract features an in-game item store that can be managed by the contract owner.
-The owner can use the GameStore function to add items to the store, each with a unique identifier, a name, and a price.
-This functionality lays the groundwork for the creation of a virtual marketplace within the game, allowing players to purchase items using tokens.
+Owner: The contract has an owner, initially set to the deployer's address (msg.sender), who has special privileges, such as minting new tokens.
 
-**Token Transfers (Transfer Function):**
+Events: The contract emits several events to log important actions, including Transfer (for token transfers), Approval (for approval of token spending), Mint (when new tokens are created), Redeem (when users redeem prizes), and Burn (when tokens are destroyed).
 
-Users can transfer tokens to other players using the transfer function.
-This peer-to-peer token transfer mechanism enables in-game transactions, facilitating the exchange of currency or items among players.
+Prize Cost Mapping: There's a mapping to store the cost of different prizes. Users can redeem prizes using their tokens, and the cost of each prize is associated with its name.
 
-**Item Redemption (Itemredeem Function):**
+Constructor: The constructor initializes the contract with the initial supply, sets the owner, and initializes the prize costs.
 
-A notable feature is the ability for users to redeem in-game items from the store in exchange for tokens.
-The Itemredeem function facilitates this process, deducting the required token amount from the user's balance and marking the item as redeemed.
-This enhances the interactive gaming experience, allowing players to acquire virtual assets within the game.
+Modifiers: The onlyOwner modifier restricts certain functions (like minting) to be called only by the contract owner, enhancing security and control.
 
-**Balances and Redemption Tracking:**
+Token Transfer Functions: The contract provides standard ERC20 functions for transferring tokens (transfer, approve, transferFrom). These functions ensure secure and permissioned token transfers.
 
-The contract maintains a balance of tokens for each user through the balance mapping, ensuring transparency regarding token holdings.
-Additionally, it tracks the items that each user has redeemed and their respective counts using redeemedItems and redeemedItemCount mappings.
+Minting: The mint function allows the owner to create new tokens and distribute them to specified addresses.
 
-The "DegenGaming" smart contract demonstrates a comprehensive set of functionalities, making it a valuable tool for game developers looking to implement blockchain-based gaming features, manage in-game economies, 
-and provide players with engaging gaming experiences on the Avalanche Fuji Test Network.
+Redeeming Prizes: Users can redeem prizes by calling the redeem function, which deducts the required token amount from their balance and logs the prize redemption.
+
+Burning Tokens: The burn function allows users to destroy their tokens, reducing the total supply. This can be useful for implementing token sinks.
+
+The "DegenGaming" smart contract demonstrates a comprehensive set of functionalities, making it a valuable tool for game developers looking to implement blockchain-based gaming features, manage in-game economies, and provide players with engaging gaming experiences on the Avalanche Fuji Test Network.
 
 ## Getting Started With Remix
 
 ```
 To execute this program and interact with the "DegenGaming" smart contract on the Avalanche Fuji Testnet, follow these steps:
 
-Ensure Connection to Avalanche Fuji Testnet:
+Ensure Fuji Testnet is connected to Avalanche:
 
 Make sure your metamask are connected to the Avalanche Fuji Testnet using your MetaMask wallet, and you have some test AVAX (Avalanche's native cryptocurrency) in your wallet to use for transactions.
 
@@ -59,12 +50,12 @@ To run the program, you can use Remix, an online Solidity Integrated Development
 Create a New Solidity File:
 
 Once you are on the Remix website, create a new Solidity file by clicking on the "+" icon located in the left-hand sidebar.
-Save the newly created file with a .sol extension, for example, "DegenGaming.sol."
+Save the newly created file with a .sol extension, for example, "new.sol."
 
 Copy and Paste the Contract Code:
 
 Copy the code from the "DegenGaming.sol" file (or "token.sol" file) that you want to execute.
-Paste the copied code into your newly created "DegenGaming.sol" file in Remix.
+Paste the copied code into your newly created "new.sol" file in Remix.
 
 Compile the Contract:
 
